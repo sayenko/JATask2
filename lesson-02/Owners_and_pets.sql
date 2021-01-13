@@ -1,0 +1,18 @@
+DROP DATABASE IF EXISTS owners_and_pets;
+CREATE DATABASE owners_and_pets CHAR SET utf8;
+USE owners_and_pets;
+
+CREATE TABLE owner(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE pets(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    kind VARCHAR(255) NOT NULL,
+    owner_id INT NOT NULL
+);
+
+ALTER TABLE pets ADD FOREIGN KEY(owner_id) REFERENCES owner(id);
